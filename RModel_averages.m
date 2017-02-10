@@ -22,7 +22,7 @@
 % constant as the initial increase
 
 
-function [R]=RModel_wShortParameter(p, tOn, tOff, t)
+function [R]=RModel_averages(p, tOn, tOff, t)
 
 nDataFiles = size(p,2)-5;
 R=zeros(nDataFiles, length(t));
@@ -31,11 +31,11 @@ weight = p(nDataFiles+5);
 for ii = 1:nDataFiles
     
     alphaOn = exp(-max(0,t-tOn(ii)) / p(nDataFiles+3));
-    alphaEnd = weight * min(1,exp(-(t-tOff(ii)) / p(nDataFiles+3))) +...
+    alphaOff = weight * min(1,exp(-(t-tOff(ii)) / p(nDataFiles+3))) +...
        (1-weight) * min(1,exp(-(t-tOff(ii)) / p(nDataFiles+4)));
     
-    R(ii,:) = alphaOn*p(nDataFiles+1) + (1-alphaOn).*alphaEnd*p(ii) +...
-        (1-alphaEnd)*p(nDataFiles+2);
+    R(ii,:) = alphaOn*p(nDataFiles+1) + (1-alphaOn).*alphaOff*p(ii) +...
+        (1-alphaOff)*p(nDataFiles+2);
     
 end
 
