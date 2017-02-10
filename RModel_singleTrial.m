@@ -22,13 +22,14 @@
 % constant as the slow exponential for initial increase
 
 
+
 function [R]=RModel_singleTrial(p, tOn, tOff, t)
 
 nDataFiles = size(p,2);
 R=zeros(nDataFiles, length(t));
 
-ROn = 1.129;
-REnd = 1.082;
+rInitial = 1.129;
+rFinal = 1.082;
 tauShort = 3.048;
 tauLong = 104.296;
 weight = 0.215;
@@ -39,8 +40,8 @@ for ii = 1:nDataFiles
     alphaOff = weight * min(1,exp(-(t-tOff(ii)) / tauShort)) +...
        (1-weight) * min(1,exp(-(t-tOff(ii)) / tauLong));
     
-    R(ii,:) = alphaOn*ROn + (1-alphaOn).*alphaEnd*p(ii) +...
-        (1-alphaEnd)*REnd;
+    R(ii,:) = alphaOn*rInitial + (1-alphaOn).*alphaOff*p(ii) +...
+        (1-alphaEnd)*rFinal;
     
 end
 
