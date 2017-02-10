@@ -24,8 +24,10 @@ all data is stored in allData_newSave.mat
 Short descriptions of included .m files
 
 - analyticSolution_rSteady: calculates the analytic solution for rSteady (Eqs. 4-6) for any given input; called by run_analyticSolution_rSteady
+- fit_saturationFunction: fits all competing models for the relation between average pleasure with and without task
 - fitAllAverages_byStimulusType: calculates average pleasure over time per condition and fits the model to this data; calls fitEmotionTrackerData.m
 - fitEmotiontrackerData: sets up and runs fminsearch to find best model fit; called by fitAllAverages_byStimulusType; calls RModel_averages
+- find_pleasureThresholdForBeauty: given the raw beauty and pleasure ratings, finds a threshold pleasure for reporting "perhaps yes" reg. felt beauty and plots it in boxplots and vertical histograms for pleasure without task
 - RModel_averages: fits the model to averaged time course data of pleasure. All parameters are free parameters; calles by fitEmotiontrackerData 
 - RModel_singleTrial: fits the model to data of single trials. Only free parameter is rSteady, all other parameters are fixed to values obtained with RModel_averages; called by plot_residuals_byExperiment_stimType
 - run_analyticSolution_rSteady: calculates average pleasure over time per condition and analytic solution for rSteady; calls analyticSolution_rSteady
