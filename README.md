@@ -24,6 +24,8 @@ all data is stored in allData_newSave.mat
 Short descriptions of included .m files
 
 - analyticSolution_rSteady: calculates the analytic solution for rSteady (Eqs. 4-6) for any given input; called by run_analyticSolution_rSteady
+- auc: calculates the area under the curve (AUC) for the ROC curves; $ Copyright (C) 2014 Brian Lau http://www.subcortex.net/ $; called by runAUCbootstrap; calls roc_2 
+- auc_bootstrap: bootstraps AUCs; $ Copyright (C) 2014 Brian Lau http://www.subcortex.net/; called by runAUCbootstrap
 - fit_saturationFunction: fits all competing models for the relation between average pleasure with and without task
 - fitAllAverages_byStimulusType: calculates average pleasure over time per condition and fits the model to this data; calls fitEmotionTrackerData.m
 - fitEmotiontrackerData: sets up and runs fminsearch to find best model fit; called by fitAllAverages_byStimulusType; calls RModel_averages
@@ -33,5 +35,7 @@ Short descriptions of included .m files
 - RModel_singleTrial: fits the model to data of single trials. Only free parameter is rSteady, all other parameters are fixed to values obtained with RModel_averages; called by plot_residuals_byExperiment_stimType
 - run_analyticSolution_rSteady: calculates average pleasure over time per condition and analytic solution for rSteady; calls analyticSolution_rSteady
 - ROC: performs ROC analysis on either beauty or pleasure ratings for predefined stimulus kind; called by runROC
+- roc_2: calculates ROC; $ Copyright (C) 2014 Brian Lau http://www.subcortex.net/ $; called by auc
+- runAUCbootstrap: performs a bootstrap test for deviation of AUC of ROC curves from 0.5; calls auc_bootstrap and auc
 - runROC: runs the ROC analyses on beauty and pleasure; calls ROC
 
